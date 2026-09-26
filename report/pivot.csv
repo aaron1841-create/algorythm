@@ -1,0 +1,9 @@
+input,pivot,n,millis,compares,moves,maxDepth,sorted
+random,first,4000,0.58,59624,32259,29,1
+random,median3,4000,0.63,55868,44763,22,1
+sorted,first,4000,25.352,8005998,0,4000,1
+sorted,median3,4000,0.227,47915,11712,12,1
+reversed,first,4000,25.467,8003998,6000,4000,1
+reversed,median3,4000,0.249,47917,17724,12,1
+few-unique,first,4000,0.473,45589,55560,16,1
+few-unique,median3,4000,0.812,48161,60624,18,1

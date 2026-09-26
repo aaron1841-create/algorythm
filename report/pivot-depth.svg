@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+  <rect width="720" height="420" fill="#fbfbf9"/>
+  <text x="20.0" y="30.0" font-size="16" fill="#24292f" text-anchor="start" font-weight="600">피벗 고르는 방법에 따른 재귀 깊이</text>
+  <text x="20.0" y="50.0" font-size="11.5" fill="#6e7781" text-anchor="start" font-weight="400">퀵 정렬 · n = 4,000 · 로그 축 · 정렬된·역순 입력에서 맨 앞 피벗이 무너진다</text>
+  <line x1="78.0" y1="358.0" x2="696.0" y2="358.0" stroke="#dfe1e4" stroke-width="1" stroke-dasharray="none"/>
+  <text x="68.0" y="362.0" font-size="10.5" fill="#6e7781" text-anchor="end" font-weight="400">10</text>
+  <line x1="78.0" y1="268.7" x2="696.0" y2="268.7" stroke="#dfe1e4" stroke-width="1" stroke-dasharray="none"/>
+  <text x="68.0" y="272.7" font-size="10.5" fill="#6e7781" text-anchor="end" font-weight="400">100</text>
+  <line x1="78.0" y1="179.3" x2="696.0" y2="179.3" stroke="#dfe1e4" stroke-width="1" stroke-dasharray="none"/>
+  <text x="68.0" y="183.3" font-size="10.5" fill="#6e7781" text-anchor="end" font-weight="400">1K</text>
+  <line x1="78.0" y1="90.0" x2="696.0" y2="90.0" stroke="#dfe1e4" stroke-width="1" stroke-dasharray="none"/>
+  <text x="68.0" y="94.0" font-size="10.5" fill="#6e7781" text-anchor="end" font-weight="400">10K</text>
+  <line x1="78.0" y1="358.0" x2="696.0" y2="358.0" stroke="#6e7781" stroke-width="1" stroke-dasharray="none"/>
+  <text x="20.0" y="78.0" font-size="11.5" fill="#6e7781" text-anchor="start" font-weight="400">재귀 깊이</text>
+  <rect x="117.2" y="316.7" width="35.0" height="41.3" fill="#8c4799"/>
+  <text x="134.8" y="311.7" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">29</text>
+  <rect x="155.2" y="327.4" width="35.0" height="30.6" fill="#E69F00"/>
+  <text x="172.8" y="322.4" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">22</text>
+  <text x="155.2" y="376.0" font-size="11.5" fill="#24292f" text-anchor="middle" font-weight="400">무작위</text>
+  <rect x="271.8" y="125.5" width="35.0" height="232.5" fill="#8c4799"/>
+  <text x="289.2" y="120.5" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">4K</text>
+  <rect x="309.8" y="350.9" width="35.0" height="7.1" fill="#E69F00"/>
+  <text x="327.2" y="345.9" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">12</text>
+  <text x="309.8" y="376.0" font-size="11.5" fill="#24292f" text-anchor="middle" font-weight="400">정렬됨</text>
+  <rect x="426.2" y="125.5" width="35.0" height="232.5" fill="#8c4799"/>
+  <text x="443.8" y="120.5" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">4K</text>
+  <rect x="464.2" y="350.9" width="35.0" height="7.1" fill="#E69F00"/>
+  <text x="481.8" y="345.9" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">12</text>
+  <text x="464.2" y="376.0" font-size="11.5" fill="#24292f" text-anchor="middle" font-weight="400">역순</text>
+  <rect x="580.8" y="339.8" width="35.0" height="18.2" fill="#8c4799"/>
+  <text x="598.2" y="334.8" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">16</text>
+  <rect x="618.8" y="335.2" width="35.0" height="22.8" fill="#E69F00"/>
+  <text x="636.2" y="330.2" font-size="9.5" fill="#6e7781" text-anchor="middle" font-weight="400">18</text>
+  <text x="618.8" y="376.0" font-size="11.5" fill="#24292f" text-anchor="middle" font-weight="400">중복많음</text>
+  <line x1="78.0" y1="390.0" x2="100.0" y2="390.0" stroke="#8c4799" stroke-width="2.4" stroke-dasharray="4 2 1 2"/>
+  <circle cx="89.0" cy="390.0" r="3" fill="#8c4799"/>
+  <text x="106.0" y="394.0" font-size="11.5" fill="#24292f" text-anchor="start" font-weight="400">맨 앞 피벗</text>
+  <line x1="163.6" y1="390.0" x2="185.6" y2="390.0" stroke="#E69F00" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <circle cx="174.6" cy="390.0" r="3" fill="#E69F00"/>
+  <text x="191.6" y="394.0" font-size="11.5" fill="#24292f" text-anchor="start" font-weight="400">중앙값 피벗</text>
+</svg>

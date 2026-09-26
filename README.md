@@ -1,25 +1,12 @@
-# algorithm-env
+# 과제1. 정렬 비교 — 삽입 · 퀵 · 힙
 
-2026-2 **고급알고리즘**(SIT2001-01)의 **실습 환경 template**입니다.
-컴파일러와 Python이 들어 있는 컨테이너, `src`/`tests` 뼈대, 그리고 그것이
-실제로 도는지 보여 주는 정렬 예제 하나가 들어 있습니다.
+2026-2 **고급알고리즘**(SIT2001-01) 과제1 저장소입니다.
+과제 템플릿 [lec-algorithm/algorithm-env](https://github.com/lec-algorithm/algorithm-env)에서
+시작했고, 샘플 [hw1-sample-2026](https://github.com/lec-algorithm/hw1-sample-2026)의 구조를 따랐습니다.
 
-- 강의 자료: [lec-algorithm.github.io/lecture](https://lec-algorithm.github.io/lecture/)
-- 강의 예제 코드: [lec-algorithm/algorithm-code](https://github.com/lec-algorithm/algorithm-code)
-- 시각화 자료: [lec-algorithm/algorithm-viz](https://github.com/lec-algorithm/algorithm-viz)
-
-## 언제 쓰나
-
-이 저장소는 **새 저장소의 출발점**입니다. 상단의 **Use this template**을 눌러
-자기 계정에 사본을 만들고 거기서 작업하세요.
-
-- **과제**를 낼 때
-- **개인프로젝트**를 시작할 때 (수업계획서상 GitHub 저장소 제출이 필수입니다)
-- 알고리즘 코드를 돌려 볼 환경이 필요할 때
-
-수업에서 다루는 예제 코드는 여기가 아니라 `algorithm-code`에 있습니다.
-그쪽은 매주 새 주제가 추가되므로, 복사하지 말고 저장소에서 바로 Codespace를
-만들거나 클론해서 `git pull`로 받으세요.
+- 보고서: [report/REPORT.md](report/REPORT.md)
+- 비교한 정렬: 삽입 정렬, 퀵 정렬(배운 것) · 힙 정렬(배우지 않은 것)
+- 측정값 원본: [report/results.csv](report/results.csv), [report/pivot.csv](report/pivot.csv)
 
 ## 준비물
 
@@ -55,22 +42,25 @@ VS Code를 쓴다면 Dev Containers 확장의 **Reopen in Container**를 골라�
 
 ## 돌려보기
 
-컨테이너 안에서 `make` 한 단어면 됩니다.
+컨테이너 안에서 실행합니다.
 
-- 실행
-
-```sh
-make run
+```
+make run                  # 비교 표
+./src/main.out --csv      # 같은 측정을 CSV로
+./src/main.out --pivot    # 퀵 정렬 피벗 실험 (맨 앞 vs 세 값의 중앙값)
+make charts               # report/ 아래에 그래프(SVG)를 다시 만든다
+python3 tools/heap_build_count.py   # 힙 만들기 단계의 비교 횟수
 ```
 
-- 결과
+결과 (일부, n = 32,000 무작위)
 
-```console
-sorted: 1 2 3 4 5 6 7 8 9 10
-sorted: 1 2 3 4 5 6 7 8 9 10
 ```
-
-C와 Python 두 구현이 같은 결과를 냅니다.
+알고리즘        시간(ms)         비교         이동   메모리 재귀깊이  정렬 안정성
+---------------------------------------------------------------------------------
+insertionSort   2221.773    255765636    255765643      8 B        1   yes    yes
+quickSort          5.766       564636       424425      8 B       27   yes    yes
+heapSort           8.443       859547       546687      8 B        1   yes    yes
+```
 
 ## 테스트
 
@@ -83,18 +73,10 @@ make test
 - 결과
 
 ```console
-ok    섞인 배열
-ok    이미 정렬된 배열
-ok    역순 배열
-ok    중복이 있는 배열
-ok    원소 하나
-ok    빈 배열
-
-6 checks, 0 failures
+ok    insertionSort  섞인 배열
+ok    insertionSort  이미 정렬된 배열
 ...
-Ran 7 tests in 0.001s
-
-OK
+51 checks, 0 failures
 ```
 
 테스트가 하나라도 실패하면 `make`가 0이 아닌 코드로 끝납니다. 과제를 내기
@@ -102,10 +84,9 @@ OK
 
 | 명령 | 하는 일 |
 | --- | --- |
-| `make run` | 예제 실행 (C · Python) |
-| `make test` | 유닛 테스트 (C · Python) |
-| `make run-c` · `make run-py` | 한쪽만 실행 |
-| `make test-c` · `make test-py` | 한쪽만 테스트 |
+| `make run` | 예제 실행 |
+| `make test` | 유닛 테스트 |
+| `make charts` | 비교 그래프(SVG)를 `report/` 아래에 다시 만든다 |
 | `make debug` | 디버그 심볼을 넣어 빌드 |
 | `make clean` | 빌드 산출물 정리 |
 
@@ -119,7 +100,6 @@ Codespaces나 Dev Containers로 열었다면 편집기에서 바로 됩니다.
 | 전체 실행 | `Cmd/Ctrl + Shift + B` (기본 빌드 작업이 `make run`) |
 | 테스트 | 명령 팔레트 → **Tasks: Run Test Task** |
 | C 디버그 | `F5` → **C 디버그 (현재 파일)** |
-| Python 디버그 | `F5` → **Python 디버그 (현재 파일)** |
 
 `F5`를 누르면 빌드가 먼저 돌아 심볼이 있는 바이너리를 만들고 디버거가
 붙습니다. 중단점을 걸고 변수를 들여다볼 수 있습니다.
@@ -148,7 +128,7 @@ make src/main.debug.out && ./src/main.debug.out
 냅니다.
 
 ```console
-undefined reference to `bubbleSort'
+undefined reference to `quickSort'
 collect2: error: ld returned 1 exit status
 ```
 
@@ -163,38 +143,37 @@ Code Runner도 기본 설정 그대로면 같은 문제가 나고, Python은 이
 ## 저장소 구조
 
 ```plaintext
-algorithm-env/
+hw1-sort-compare/
 ├── .devcontainer/devcontainer.json  # Codespaces · Dev Containers 설정
 ├── compose.yml                      # 실습 컨테이너 (서비스 이름: lab)
 ├── Dockerfile                       # gcc · gdb · make · python3 · git
 ├── .vscode/                         # 빌드·디버그 설정 (F5, Cmd+Shift+B)
 ├── Makefile                         # run · test · debug · clean
 ├── src/
-│   ├── sort.h · sort.c              # C 구현
-│   ├── main.c                       # C 실행 예제
-│   ├── sort.py                      # Python 구현
-│   └── main.py                      # Python 실행 예제
+│   ├── sort.h                       # 공통 인터페이스 (SortAlgorithm)
+│   ├── sortctx.h · sort.c           # 구현들이 함께 쓰는 도구 · 구현 표
+│   ├── insertionSort.c              # 삽입 정렬
+│   ├── quickSort.c                  # 퀵 정렬
+│   ├── heapSort.c                   # 힙 정렬
+│   ├── bench.h · bench.c            # 시간 · 메모리 · 안정성 측정
+│   └── main.c                       # 비교 결과 출력 (--csv 옵션 있음)
+├── report/
+│   ├── REPORT.md                    # 정렬 비교 보고서
+│   ├── pivot.csv                    # 피벗 실험 측정값
+│   ├── *.svg                        # 비교 그래프 (make charts가 만든다)
+│   └── results.csv                  # 그래프·표가 나온 측정값 원본
+├── tools/                           # 그래프를 그리는 스크립트 (표준 모듈만)
 └── tests/
-    ├── test_sort.c                  # C 유닛 테스트 (표준 C만 사용)
-    └── test_sort.py                 # Python 유닛 테스트 (unittest)
+    └── test_sort.c                  # 유닛 테스트 (표준 C만 사용)
 ```
 
 ## 규약
 
 - **실행 파일은 `*.out`으로 만듭니다.** `.gitignore`가 `*.out`만 걸러내므로,
   컨테이너에서 컴파일한 Linux 바이너리가 커밋에 섞이지 않습니다.
-- **외부 라이브러리를 쓰지 않습니다.** C는 표준 라이브러리만, Python은 표준
-  모듈만 씁니다. C 테스트도 프레임워크 없이 `assert` 수준으로 직접 씁니다.
-- **C와 Python은 같은 알고리즘을 같은 이름의 함수로 구현합니다.** 언어 차이가
-  알고리즘 차이로 보이지 않게 합니다.
-- 파일명은 각 언어의 관례를 따릅니다. C는 camelCase(`bubbleSort`), Python은
-  snake_case(`bubble_sort`)입니다.
-
-## 자기 코드로 바꾸기
-
-`src`의 버블 정렬은 환경이 도는지 보여 주는 예제일 뿐입니다. 지우고 자기
-코드를 넣으세요. `tests`도 마찬가지입니다. 뼈대(`Makefile`, `src`, `tests`,
-컨테이너 설정)만 남기면 됩니다.
+- **외부 라이브러리를 쓰지 않습니다.** 표준 라이브러리만 씁니다. 테스트도
+  프레임워크 없이 `assert` 수준으로 직접 씁니다.
+- 함수 이름은 camelCase(`quickSort`)를 씁니다.
 
 ## 변경 기록
 
